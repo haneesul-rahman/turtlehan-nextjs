@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Build outputs
+dist/
+build/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Cache
+.cache/
+.vite/
+*.tsbuildinfo
+
+# Logs
+*.log
+*-debug.log*
+logs/
+
+# Temporary files
+.tmp-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Figma
+/.figma/design-context/
+
+# Agent and plugin state
+.claude-replay.*
+.plugins/
+.opencode-skills/

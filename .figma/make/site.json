@@ -1,0 +1,10 @@
+{
+  "description": "Explore TURTLEHAN’s consulting, staffing, property, hospitality, travel, and CSR services, and connect with its team across India and the UAE.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
