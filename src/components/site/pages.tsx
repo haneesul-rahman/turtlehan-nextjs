@@ -173,11 +173,12 @@ function ServiceModals() {
             <div className="service-modal-content">
               <small>{service.eyebrow}</small>
               <h2 id={`service-title-${service.slug}`}>{service.title}</h2>
+              <p className="service-modal-lead">{service.description}</p>
               <p className="service-modal-overview">{service.overview}</p>
 
               <div className="service-modal-columns">
                 <div>
-                  <h3>What we offer</h3>
+                  <h3>{service.offeringsLabel ?? "What we offer"}</h3>
                   <ul>
                     {service.offerings.map((offering) => (
                       <li key={offering}>
@@ -188,7 +189,7 @@ function ServiceModals() {
                   </ul>
                 </div>
                 <div>
-                  <h3>How it helps</h3>
+                  <h3>{service.benefitsLabel ?? "How it helps"}</h3>
                   <ul>
                     {service.benefits.map((benefit) => (
                       <li key={benefit}>
@@ -201,7 +202,8 @@ function ServiceModals() {
               </div>
 
               <a href="#contact" className="button button-gold">
-                Enquire about this service <Icon name="arrow" size={18} />
+                {service.enquiryLabel ?? "Enquire about this service"}{" "}
+                <Icon name="arrow" size={18} />
               </a>
             </div>
           </div>

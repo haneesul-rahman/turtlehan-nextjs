@@ -27,30 +27,38 @@ export type Service = {
   overview: string;
   offerings: string[];
   benefits: string[];
+  enquiryLabel?: string;
+  offeringsLabel?: string;
+  benefitsLabel?: string;
 };
 
 export const services: Service[] = [
   {
-    slug: "business-consulting",
+    slug: "business-setup-management",
     number: "01",
-    title: "Business Consulting",
-    eyebrow: "Strategy & Advisory",
+    title: "Business Setup & Management",
+    eyebrow: "End-to-End Solution",
     description:
-      "Practical insight and considered direction for businesses navigating opportunity and change.",
+      "From setting up your business to running its operations, we manage the entire journey.",
     image: images.meeting,
     overview:
-      "We work alongside organisations to clarify priorities, strengthen operations and pursue sustainable opportunities with confidence.",
+      "We help organisations establish and operate their businesses from the ground up. From infrastructure development and workforce recruitment to day-to-day operational management, we provide end-to-end support throughout the business launch and growth journey, helping build sustainable and profitable operations.",
     offerings: [
-      "Business advisory",
-      "Strategic planning",
-      "Business development",
-      "Operational consulting",
+      "Business planning and establishment",
+      "Infrastructure and facility setup",
+      "Workforce recruitment and deployment",
+      "Operational setup and management",
+      "Performance monitoring and optimisation",
+      "Transition to a stable, profitable operation",
     ],
     benefits: [
-      "Clearer strategic direction",
-      "Structured decision-making",
-      "Solutions shaped around your context",
+      "Start operations without managing every setup complexity yourself.",
+      "Have infrastructure, people and processes coordinated under one partner.",
+      "Reduce the challenges of establishing a new business.",
+      "Maintain operational efficiency during the initial growth phase.",
+      "Build a foundation for long-term sustainability and profitability.",
     ],
+    enquiryLabel: "Enquire about business setup",
   },
   {
     slug: "manpower-supply",
@@ -97,26 +105,24 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "hospitality-solutions",
+    slug: "stay-reservations",
     number: "04",
-    title: "Hospitality Solutions",
-    eyebrow: "Service & Experience",
-    description:
-      "Thoughtful operational solutions that elevate service, consistency and guest experience.",
+    title: "Stay Reservations",
+    eyebrow: "Kannur Stays",
+    description: "Discover your perfect stay in Kannur.",
     image: images.hospitality,
     overview:
-      "Our hospitality practice brings a service-led perspective to hotel, resort and guest experience operations.",
-    offerings: [
-      "Hotel management",
-      "Resort management",
-      "Hospitality operations",
-      "Guest experience management",
-    ],
+      "Explore a selection of welcoming homestays and resorts in Kannur, and let us help you find and book the right place for your getaway.",
+    offerings: ["Sea Breeze, Kannur", "Kadale, Kannur", "Roba, Kannur", "Seashell, Kannur"],
     benefits: [
-      "Guest-first thinking",
-      "Operational consistency",
-      "Service standards tailored to the property",
+      "Explore available stays",
+      "Find the right accommodation",
+      "Enquire about availability",
+      "Assistance with reservations",
     ],
+    enquiryLabel: "Enquire about a stay",
+    offeringsLabel: "Our stays",
+    benefitsLabel: "How we help",
   },
   {
     slug: "tourism-travels",
