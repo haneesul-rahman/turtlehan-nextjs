@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 const links = [
@@ -17,13 +18,16 @@ export function Logo({ light = false }: { light?: boolean }) {
       className={`logo ${light ? "logo-light" : ""}`}
       aria-label="Scroll to the TURTLEHAN introduction"
     >
-      <span className="logo-mark">
-        <span>T</span>
-      </span>
-      <span className="logo-word">
-        <b>TURTLEHAN</b>
-        <small>INDIA · UAE</small>
-      </span>
+      <Image
+        className="logo-emblem"
+        src="/images/turtlehan-logo-transparent.webp"
+        alt=""
+        width={935}
+        height={730}
+        priority
+      />
+      <span className="logo-divider" aria-hidden="true" />
+      <span className="logo-display-name">TURTLEHAN</span>
     </a>
   );
 }

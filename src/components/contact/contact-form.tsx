@@ -40,111 +40,113 @@ export function ContactForm() {
   };
 
   return (
-    <section className="section container contact-layout" id="contact">
-      <div className="contact-details">
-        <div className="section-heading">
-          <span className="eyebrow">
-            <i />
-            Start a conversation
-          </span>
-          <h2>
-            Let&apos;s build something
-            <br />
-            <em>together.</em>
-          </h2>
-        </div>
-        <p>
-          Tell us where you want to go. We&apos;ll bring the right perspective, people and
-          commitment to the conversation.
-        </p>
-        <div className="contact-list">
-          <div>
-            <Mail />
-            <span>
-              <small>Email</small>
-              <b>Official email to be confirmed</b>
+    <section className="section contact-section" id="contact">
+      <div className="container contact-layout">
+        <div className="contact-details">
+          <div className="section-heading">
+            <span className="eyebrow">
+              <i />
+              Start a conversation
             </span>
+            <h2>
+              Let&apos;s build something
+              <br />
+              <em>together.</em>
+            </h2>
           </div>
-          <div>
-            <Phone />
-            <span>
-              <small>Phone / WhatsApp</small>
-              <b>Official number to be confirmed</b>
-            </span>
+          <p>
+            Tell us where you want to go. We&apos;ll bring the right perspective, people and
+            commitment to the conversation.
+          </p>
+          <div className="contact-list">
+            <div>
+              <Mail />
+              <span>
+                <small>Email</small>
+                <b>Official email to be confirmed</b>
+              </span>
+            </div>
+            <div>
+              <Phone />
+              <span>
+                <small>Phone / WhatsApp</small>
+                <b>Official number to be confirmed</b>
+              </span>
+            </div>
+            <div>
+              <MapPin />
+              <span>
+                <small>Locations</small>
+                <b>India · United Arab Emirates</b>
+              </span>
+            </div>
           </div>
-          <div>
-            <MapPin />
-            <span>
-              <small>Locations</small>
-              <b>India · United Arab Emirates</b>
-            </span>
+          <div className="social-row">
+            <span>Follow TURTLEHAN</span>
+            <a href="#" aria-label="LinkedIn">
+              <Linkedin />
+            </a>
+            <a href="#" aria-label="Instagram">
+              <Instagram />
+            </a>
           </div>
         </div>
-        <div className="social-row">
-          <span>Follow TURTLEHAN</span>
-          <a href="#" aria-label="LinkedIn">
-            <Linkedin />
-          </a>
-          <a href="#" aria-label="Instagram">
-            <Instagram />
-          </a>
-        </div>
-      </div>
-      <form className="contact-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="form-heading">
-          <span>Business enquiry</span>
-          <p>Fields marked * are required</p>
-        </div>
-        <div className="form-grid">
-          <Field label="Full Name *" error={errors.name?.message}>
-            <Input {...register("name")} />
-          </Field>
-          <Field label="Email Address *" error={errors.email?.message}>
-            <Input type="email" {...register("email")} />
-          </Field>
-          <Field label="Phone Number">
-            <Input type="tel" {...register("phone")} />
-          </Field>
-          <label className={errors.service ? "has-error" : ""}>
-            <span>Service Interested In *</span>
-            <select {...register("service")}>
-              <option value="" disabled>
-                Select a division
-              </option>
-              {services.map((service) => (
-                <option value={service.slug} key={service.slug}>
-                  {service.title}
+        <form className="contact-form" onSubmit={handleSubmit(onSubmit)} noValidate>
+          <div className="form-heading">
+            <span>Business enquiry</span>
+            <p>Fields marked * are required</p>
+          </div>
+          <div className="form-grid">
+            <Field label="Full Name *" error={errors.name?.message}>
+              <Input {...register("name")} />
+            </Field>
+            <Field label="Email Address *" error={errors.email?.message}>
+              <Input type="email" {...register("email")} />
+            </Field>
+            <Field label="Phone Number">
+              <Input type="tel" {...register("phone")} />
+            </Field>
+            <label className={errors.service ? "has-error" : ""}>
+              <span>Service Interested In *</span>
+              <select {...register("service")}>
+                <option value="" disabled>
+                  Select a division
                 </option>
-              ))}
-            </select>
-            {errors.service && <small>{errors.service.message}</small>}
-          </label>
-          <Field label="Subject" full>
-            <Input {...register("subject")} />
-          </Field>
-          <Field label="Message *" full error={errors.message?.message}>
-            <Textarea
-              rows={5}
-              placeholder="Tell us a little about your enquiry"
-              {...register("message")}
-            />
-          </Field>
-        </div>
-        {submitted && (
-          <div className="form-status success" role="status">
-            <Check size={18} /> Thank you. Your enquiry has been prepared successfully. Connect this
-            form to your preferred form service before launch.
+                {services.map((service) => (
+                  <option value={service.slug} key={service.slug}>
+                    {service.title}
+                  </option>
+                ))}
+              </select>
+              {errors.service && <small>{errors.service.message}</small>}
+            </label>
+            <Field label="Subject" full>
+              <Input {...register("subject")} />
+            </Field>
+            <Field label="Message *" full error={errors.message?.message}>
+              <Textarea
+                rows={5}
+                placeholder="Tell us a little about your enquiry"
+                {...register("message")}
+              />
+            </Field>
           </div>
-        )}
-        {Object.keys(errors).length > 0 && (
-          <div className="form-status error" role="alert">
-            Please review the highlighted fields and try again.
-          </div>
-        )}
-        <Button variant="gold" type="submit" disabled={isSubmitting}>
-          Send enquiry <span aria-hidden="true">→</span>
-        </Button>
-      </form>
+          {submitted && (
+            <div className="form-status success" role="status">
+              <Check size={18} /> Thank you. Your enquiry has been prepared successfully. Connect
+              this form to your preferred form service before launch.
+            </div>
+          )}
+          {Object.keys(errors).length > 0 && (
+            <div className="form-status error" role="alert">
+              Please review the highlighted fields and try again.
+            </div>
+          )}
+          <Button variant="gold" type="submit" disabled={isSubmitting}>
+            Send enquiry <span aria-hidden="true">→</span>
+          </Button>
+        </form>
+      </div>
     </section>
   );
 }

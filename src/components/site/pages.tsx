@@ -83,15 +83,17 @@ const Icon = ({ name, size = 20 }: { name: string; size?: number }) => {
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <Link href="/" className={`logo ${light ? "logo-light" : ""}`} aria-label="Turtlehan home">
-      <span className="logo-mark">
-        <span>T</span>
-      </span>
-      <span className="logo-word">
-        <b>TURTLEHAN</b>
-        <small>INDIA · UAE</small>
-      </span>
-    </Link>
+    <a href="#home" className={`logo ${light ? "logo-light" : ""}`} aria-label="Turtlehan home">
+      <img
+        className="logo-emblem"
+        src="/images/turtlehan-logo-transparent.webp"
+        alt=""
+        width="935"
+        height="730"
+      />
+      <span className="logo-divider" aria-hidden="true" />
+      <span className="logo-display-name">TURTLEHAN</span>
+    </a>
   );
 }
 
@@ -952,7 +954,6 @@ export function Footer() {
         <div>
           <h4>Navigate</h4>
           {[
-            ["#home", "Home"],
             ["#services", "Our Services"],
             ["#clients", "Our Clients"],
             ["#team", "Our Team"],

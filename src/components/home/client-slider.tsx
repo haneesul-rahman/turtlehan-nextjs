@@ -39,18 +39,6 @@ function Carousel({ size, variant }: { size: number; variant: string }) {
             id={`clients-${variant}-${pageIndex + 1}`}
             key={`${variant}-${pageIndex}`}
           >
-            <div className="slider-controls" aria-label="Client slider controls">
-              <a href={`#clients-${variant}-${previous + 1}`} aria-label="Show previous clients">
-                <ChevronLeft aria-hidden="true" />
-              </a>
-              <span>
-                <b>{String(pageIndex + 1).padStart(2, "0")}</b> /{" "}
-                {String(pages.length).padStart(2, "0")}
-              </span>
-              <a href={`#clients-${variant}-${next + 1}`} aria-label="Show next clients">
-                <ChevronRight aria-hidden="true" />
-              </a>
-            </div>
             <div className="client-page-grid">
               {clientsPage.map((client) => (
                 <article className="client-card" key={client.name}>
@@ -71,6 +59,18 @@ function Carousel({ size, variant }: { size: number; variant: string }) {
                   </div>
                 </article>
               ))}
+            </div>
+            <div className="slider-controls" aria-label="Client slider controls">
+              <a href={`#clients-${variant}-${previous + 1}`} aria-label="Show previous clients">
+                <ChevronLeft aria-hidden="true" />
+              </a>
+              <span>
+                <b>{String(pageIndex + 1).padStart(2, "0")}</b> /{" "}
+                {String(pages.length).padStart(2, "0")}
+              </span>
+              <a href={`#clients-${variant}-${next + 1}`} aria-label="Show next clients">
+                <ChevronRight aria-hidden="true" />
+              </a>
             </div>
           </div>
         );

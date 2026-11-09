@@ -80,8 +80,30 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 14px;
   margin-right: auto;
+}
+.logo-emblem {
+  display: block;
+  width: 66px;
+  height: 52px;
+  object-fit: contain;
+}
+.logo-divider {
+  width: 1px;
+  height: 42px;
+  background: rgba(20, 43, 69, 0.5);
+}
+.logo-display-name {
+  color: #101418;
+  font: 400 24px/1 var(--serif);
+  letter-spacing: 0.035em;
+}
+.site-header .logo-display-name {
+  color: #101418;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.025em;
 }
 .logo-mark {
   width: 40px;
@@ -147,6 +169,9 @@
 }
 .desktop-nav a.active {
   color: var(--navy);
+}
+.desktop-cta {
+  border-radius: 9px;
 }
 .button {
   min-height: 52px;
@@ -398,6 +423,11 @@ em {
 .services-section,
 .values-section {
   background: #eeeae2;
+}
+.section.services-section,
+.section.clients-section,
+.section.leadership {
+  padding-top: 76px;
 }
 .heading-row {
   display: flex;
@@ -1146,8 +1176,15 @@ em {
   grid-template-columns: 0.75fr 1.25fr;
   gap: 100px;
 }
+.contact-section {
+  background: var(--navy);
+  color: white;
+}
+.contact-section .section-heading h2 {
+  color: white;
+}
 .contact-details > p {
-  color: var(--muted);
+  color: #b8c4cf;
   line-height: 1.8;
   font-size: 14px;
   margin-top: 28px;
@@ -1159,7 +1196,7 @@ em {
   display: flex;
   gap: 18px;
   padding: 22px 0;
-  border-top: 1px solid #ded9d0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
   color: var(--gold);
 }
 .contact-list span {
@@ -1168,13 +1205,13 @@ em {
   gap: 4px;
 }
 .contact-list small {
-  color: var(--muted);
+  color: #91a4b4;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 8px;
 }
 .contact-list b {
-  color: var(--navy);
+  color: white;
   font-size: 12px;
   font-weight: 600;
 }
@@ -1186,7 +1223,7 @@ em {
 }
 .social-row > span {
   margin-right: 10px;
-  color: var(--navy);
+  color: white;
   text-transform: uppercase;
   font-size: 9px;
   letter-spacing: 0.14em;
@@ -1199,6 +1236,10 @@ em {
   display: grid;
   place-items: center;
   border: 1px solid #d4cec3;
+}
+.contact-section .social-row a {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.28);
 }
 .contact-form {
   background: white;
@@ -1363,9 +1404,9 @@ em {
   margin-bottom: 30px;
 }
 footer {
-  background: var(--navy-deep);
-  color: white;
-  padding-top: 80px;
+  background: var(--cream);
+  color: var(--navy);
+  padding-top: 72px;
 }
 .footer-grid {
   display: grid;
@@ -1376,7 +1417,7 @@ footer {
 .footer-brand > p {
   max-width: 320px;
   margin-top: 25px;
-  color: #92a4b4;
+  color: var(--navy);
   font-size: 12px;
   line-height: 1.8;
 }
@@ -1386,8 +1427,8 @@ footer {
   margin-top: 25px;
 }
 .footer-social a {
-  border-color: rgba(255, 255, 255, 0.2);
-  color: var(--gold);
+  border-color: var(--blue);
+  color: var(--navy);
 }
 footer h4 {
   color: var(--gold);
@@ -1401,26 +1442,46 @@ footer .footer-grid > div:not(:first-child) > p {
   display: flex;
   align-items: center;
   gap: 7px;
-  color: #a9b6c1;
+  color: var(--navy);
   font-size: 11px;
   margin-bottom: 13px;
   transition: color 0.2s;
 }
 footer .footer-grid > div:not(:first-child) > a:hover {
-  color: white;
+  color: var(--gold);
 }
 .footer-contact-title {
   margin-top: 34px;
 }
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: max(24px, calc((100vw - 1180px) / 2));
+  background: var(--navy);
+  border-top: 0;
   padding-block: 24px;
   display: flex;
   justify-content: space-between;
-  color: #71889b;
+  color: white;
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+.footer-brand .logo {
+  gap: 12px;
+}
+.footer-brand .logo-emblem {
+  width: 82px;
+  height: 64px;
+}
+.footer-brand .logo-divider {
+  height: 48px;
+}
+.footer-brand .logo-display-name {
+  color: #101418;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .clients-section {
@@ -1490,7 +1551,7 @@ footer .footer-grid > div:not(:first-child) > a:hover {
 }
 .client-slide .slider-controls {
   justify-content: flex-end;
-  margin-bottom: 18px;
+  margin-top: 24px;
 }
 .client-page-grid {
   display: grid;
@@ -1660,6 +1721,22 @@ footer .footer-grid > div:not(:first-child) > a:hover {
     width: 34px;
     height: 34px;
   }
+  .logo-emblem {
+    width: 50px;
+    height: 40px;
+  }
+  .logo-divider {
+    height: 34px;
+  }
+  .logo-display-name {
+    font-size: 21px;
+  }
+  .site-header .logo-display-name {
+    font-size: 17px;
+  }
+  .footer-brand .logo-display-name {
+    font-size: 21px;
+  }
   .logo-word b {
     font-size: 14px;
   }
@@ -1691,6 +1768,11 @@ footer .footer-grid > div:not(:first-child) > a:hover {
   }
   .section {
     padding-block: 72px;
+  }
+  .section.services-section,
+  .section.clients-section,
+  .section.leadership {
+    padding-top: 52px;
   }
   .section-heading h2,
   .cta-banner h2 {
