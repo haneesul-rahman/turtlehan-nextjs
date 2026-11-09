@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { ContactForm } from "@/components/contact/contact-form";
+import { ClientSlider } from "@/components/home/client-slider";
 
 import { images, services, type Service } from "@/data/site";
 
@@ -118,21 +119,93 @@ function SectionHeading({
 }
 
 function ServiceCard({ service }: { service: Service }) {
+  const modalId = `service-${service.slug}`;
+
   return (
     <article className="service-card">
-      <Link href={`/services/${service.slug}`} className="service-image">
+      <a
+        href={`#${modalId}`}
+        className="service-image"
+        aria-label={`View ${service.title} details`}
+      >
         <img src={service.image} alt="" />
         <span>{service.number}</span>
-      </Link>
+      </a>
       <div className="service-copy">
         <small>{service.eyebrow}</small>
         <h3>{service.title}</h3>
         <p>{service.description}</p>
-        <Link href={`/services/${service.slug}`} className="text-link">
-          Explore division <Icon name="arrow" size={18} />
-        </Link>
+        <a href={`#${modalId}`} className="text-link">
+          View details <Icon name="arrow" size={18} />
+        </a>
       </div>
     </article>
+  );
+}
+
+function ServiceModals() {
+  return (
+    <>
+      {services.map((service) => (
+        <section
+          className="service-modal"
+          id={`service-${service.slug}`}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={`service-title-${service.slug}`}
+          key={service.slug}
+        >
+          <a
+            className="service-modal-backdrop"
+            href="#services"
+            aria-label="Close service details"
+          />
+          <div className="service-modal-panel">
+            <a className="service-modal-close" href="#services" aria-label="Close service details">
+              <Icon name="close" size={22} />
+            </a>
+            <div className="service-modal-image">
+              <img src={service.image} alt="" />
+              <span>{service.number}</span>
+            </div>
+            <div className="service-modal-content">
+              <small>{service.eyebrow}</small>
+              <h2 id={`service-title-${service.slug}`}>{service.title}</h2>
+              <p className="service-modal-overview">{service.overview}</p>
+
+              <div className="service-modal-columns">
+                <div>
+                  <h3>What we offer</h3>
+                  <ul>
+                    {service.offerings.map((offering) => (
+                      <li key={offering}>
+                        <Icon name="check" size={16} />
+                        {offering}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3>How it helps</h3>
+                  <ul>
+                    {service.benefits.map((benefit) => (
+                      <li key={benefit}>
+                        <Icon name="check" size={16} />
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <a href="#contact" className="button button-gold">
+                Enquire about this service <Icon name="arrow" size={18} />
+              </a>
+            </div>
+          </div>
+        </section>
+      ))}
+    </>
   );
 }
 
@@ -153,9 +226,9 @@ function CtaBanner({
         <h2>{title}</h2>
         <p>{text}</p>
       </div>
-      <Link href="/contact" className="button button-gold">
-        Contact us <Icon name="arrow" size={18} />
-      </Link>
+      <a href="#contact" className="button button-gold">
+        Get in touch <Icon name="arrow" size={18} />
+      </a>
     </section>
   );
 }
@@ -163,7 +236,7 @@ function CtaBanner({
 export function HomePage() {
   return (
     <>
-      <section className="hero">
+      <section className="hero" id="home">
         <img src={images.hero} alt="Professionals collaborating in a modern office" />
         <div className="hero-overlay" />
         <div className="hero-content">
@@ -178,17 +251,13 @@ export function HomePage() {
             two dynamic markets.
           </p>
           <div className="hero-actions">
-            <Link href="/services" className="button button-gold">
+            <a href="#services" className="button button-gold">
               Explore our services <Icon name="arrow" size={18} />
-            </Link>
-            <Link href="/contact" className="button button-outline-light">
-              Contact us
-            </Link>
+            </a>
+            <a href="#contact" className="button button-outline-light">
+              Get in touch
+            </a>
           </div>
-        </div>
-        <div className="hero-corner">
-          <span>Built on purpose</span>
-          <p>Expertise across six complementary business divisions.</p>
         </div>
         <div className="scroll-note">
           <i /> Scroll to discover
@@ -198,10 +267,6 @@ export function HomePage() {
       <section className="section about-intro container">
         <div className="about-image-wrap">
           <img src={images.meeting} alt="A collaborative business meeting" />
-          <div className="image-note">
-            <b>Two markets.</b>
-            <span>One shared standard.</span>
-          </div>
         </div>
         <div className="about-copy">
           <SectionHeading
@@ -221,35 +286,6 @@ export function HomePage() {
             social initiatives, our divisions share one belief: lasting value comes from
             understanding people, acting with integrity and doing the details well.
           </p>
-          <Link href="/about" className="button button-secondary">
-            Our story <Icon name="arrow" size={18} />
-          </Link>
-        </div>
-      </section>
-
-      <section className="section services-section">
-        <div className="container">
-          <div className="heading-row">
-            <SectionHeading
-              label="Our Business Divisions"
-              title={
-                <>
-                  Connected expertise.
-                  <br />
-                  <em>Distinct capabilities.</em>
-                </>
-              }
-            />
-            <p>
-              Six focused divisions, united by a commitment to dependable delivery and thoughtful
-              partnership.
-            </p>
-          </div>
-          <div className="service-grid">
-            {services.map((service) => (
-              <ServiceCard service={service} key={service.slug} />
-            ))}
-          </div>
         </div>
       </section>
 
@@ -313,7 +349,6 @@ export function HomePage() {
           align="center"
         />
         <div className="presence-map">
-          <div className="map-lines" />
           <article>
             <span className="place-code">IN</span>
             <div>
@@ -322,11 +357,6 @@ export function HomePage() {
               <p>Deep local context in one of the world’s most dynamic business environments.</p>
             </div>
           </article>
-          <div className="route">
-            <span />
-            <Icon name="globe" size={28} />
-            <span />
-          </div>
           <article>
             <span className="place-code">AE</span>
             <div>
@@ -337,6 +367,36 @@ export function HomePage() {
           </article>
         </div>
       </section>
+
+      <section className="section services-section" id="services">
+        <div className="container">
+          <div className="heading-row">
+            <SectionHeading
+              label="Our Business Divisions"
+              title={
+                <>
+                  Connected expertise.
+                  <br />
+                  <em>Distinct capabilities.</em>
+                </>
+              }
+            />
+            <p>
+              Six focused divisions, united by a commitment to dependable delivery and thoughtful
+              partnership.
+            </p>
+          </div>
+          <div className="service-grid">
+            {services.map((service) => (
+              <ServiceCard service={service} key={service.slug} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ServiceModals />
+
+      <ClientSlider />
 
       <LeadershipPreview />
 
@@ -355,16 +415,13 @@ export function HomePage() {
             Our social responsibility work focuses on community development and meaningful support
             for people affected by autism and polio-related disabilities.
           </p>
-          <Link href="/csr" className="button button-secondary">
-            Discover our CSR vision <Icon name="arrow" size={18} />
-          </Link>
         </div>
         <div className="csr-images">
           <img src={images.csr} alt="Children together in a community setting" />
           <img src={images.csrAlt} alt="Women smiling together" />
         </div>
       </section>
-      <CtaBanner />
+      <ContactForm />
     </>
   );
 }
@@ -631,7 +688,7 @@ const team = [
 
 function LeadershipPreview() {
   return (
-    <section className="section leadership">
+    <section className="section leadership" id="team">
       <div className="container">
         <div className="heading-row">
           <SectionHeading
@@ -644,9 +701,6 @@ function LeadershipPreview() {
               </>
             }
           />
-          <Link href="/team" className="text-link">
-            Meet our team <Icon name="arrow" size={18} />
-          </Link>
         </div>
         <div className="team-preview">
           {team.map((person, i) => (
@@ -898,24 +952,22 @@ export function Footer() {
         <div>
           <h4>Navigate</h4>
           {[
-            ["/", "Home"],
-            ["/about", "About Us"],
-            ["/services", "Our Services"],
-            ["/team", "Our Team"],
-            ["/csr", "CSR Initiatives"],
-            ["/contact", "Contact Us"],
+            ["#home", "Home"],
+            ["#services", "Our Services"],
+            ["#clients", "Our Clients"],
+            ["#team", "Our Team"],
           ].map(([p, l]) => (
-            <Link href={p} key={p}>
+            <a href={p} key={p}>
               {l}
-            </Link>
+            </a>
           ))}
         </div>
         <div>
           <h4>Divisions</h4>
           {services.map((s) => (
-            <Link href={`/services/${s.slug}`} key={s.slug}>
+            <a href="#services" key={s.slug}>
               {s.title}
-            </Link>
+            </a>
           ))}
         </div>
         <div>
@@ -923,9 +975,9 @@ export function Footer() {
           <p>India</p>
           <p>United Arab Emirates</p>
           <h4 className="footer-contact-title">Enquiries</h4>
-          <Link href="/contact">
+          <a href="#contact">
             Contact our team <Icon name="arrow" size={16} />
-          </Link>
+          </a>
         </div>
       </div>
       <div className="container footer-bottom">

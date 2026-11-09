@@ -2,22 +2,21 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
-  ["/", "Home"],
-  ["/about", "About Us"],
-  ["/services", "Our Services"],
-  ["/team", "Our Team"],
-  ["/csr", "CSR"],
-  ["/contact", "Contact"],
+  ["#services", "Our Services"],
+  ["#clients", "Our Clients"],
+  ["#team", "Our Team"],
 ] as const;
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
-    <Link href="/" className={`logo ${light ? "logo-light" : ""}`} aria-label="Turtlehan home">
+    <a
+      href="#home"
+      className={`logo ${light ? "logo-light" : ""}`}
+      aria-label="Scroll to the TURTLEHAN introduction"
+    >
       <span className="logo-mark">
         <span>T</span>
       </span>
@@ -25,12 +24,11 @@ export function Logo({ light = false }: { light?: boolean }) {
         <b>TURTLEHAN</b>
         <small>INDIA · UAE</small>
       </span>
-    </Link>
+    </a>
   );
 }
 
 export function Header() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const reducedMotion = useReducedMotion();
 
@@ -40,22 +38,14 @@ export function Header() {
         <Logo />
         <nav className="desktop-nav" aria-label="Primary navigation">
           {links.map(([href, label]) => (
-            <Link
-              key={href}
-              href={href}
-              className={
-                pathname === href || (href === "/services" && pathname.startsWith("/services/"))
-                  ? "active"
-                  : ""
-              }
-            >
+            <a key={href} href={href}>
               {label}
-            </Link>
+            </a>
           ))}
         </nav>
-        <Link href="/contact" className="button button-small desktop-cta">
+        <a href="#contact" className="button button-small desktop-cta">
           Get in touch <ArrowRight size={17} aria-hidden="true" />
-        </Link>
+        </a>
         <button
           className="menu-button"
           onClick={() => setOpen((value) => !value)}
@@ -77,14 +67,14 @@ export function Header() {
             transition={{ duration: 0.24, ease: "easeOut" }}
           >
             {links.map(([href, label]) => (
-              <Link key={href} href={href} onClick={() => setOpen(false)}>
+              <a key={href} href={href} onClick={() => setOpen(false)}>
                 {label}
                 <ArrowRight size={18} aria-hidden="true" />
-              </Link>
+              </a>
             ))}
-            <Link href="/contact" className="button" onClick={() => setOpen(false)}>
+            <a href="#contact" className="button" onClick={() => setOpen(false)}>
               Start a conversation
-            </Link>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

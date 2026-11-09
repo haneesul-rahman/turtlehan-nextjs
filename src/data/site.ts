@@ -10,6 +10,8 @@ export const images = {
     "https://images.unsplash.com/photo-1621293954908-907159247fc8?auto=format&fit=crop&w=1400&q=82",
   travel:
     "https://images.unsplash.com/photo-1532968899863-5b52ef155913?auto=format&fit=crop&w=1400&q=82",
+  education:
+    "https://images.unsplash.com/photo-1687709348710-05314eea5476?auto=format&fit=crop&w=1400&q=82",
   csr: "https://images.unsplash.com/photo-1524069290683-0457abfe42c3?auto=format&fit=crop&w=1400&q=82",
   csrAlt:
     "https://images.unsplash.com/photo-1567122087721-47b09b61e1d1?auto=format&fit=crop&w=1400&q=82",
@@ -135,25 +137,25 @@ export const services: Service[] = [
     benefits: ["Simplified planning", "Responsive assistance", "Travel shaped around your needs"],
   },
   {
-    slug: "csr-initiatives",
+    slug: "college-admissions",
     number: "06",
-    title: "CSR Initiatives",
-    eyebrow: "Purpose & Community",
+    title: "College Admissions",
+    eyebrow: "Education & Guidance",
     description:
-      "Purpose-led initiatives supporting communities and people affected by autism and polio-related disabilities.",
-    image: images.csr,
+      "Clear, student-focused guidance for navigating college choices and the admissions journey.",
+    image: images.education,
     overview:
-      "We believe responsible business should contribute to stronger, more inclusive communities through thoughtful partnerships and programmes.",
+      "We support students and families through the practical stages of identifying suitable study opportunities and preparing applications.",
     offerings: [
-      "Community development",
-      "Social responsibility programmes",
-      "Autism support initiatives",
-      "Polio-related disability support",
+      "College admissions guidance",
+      "Course and institution selection",
+      "Application support",
+      "Documentation coordination",
     ],
     benefits: [
-      "Community-centred action",
-      "Partnership-led programmes",
-      "A focus on dignity and inclusion",
+      "A clearer admissions journey",
+      "Student-focused guidance",
+      "Structured application support",
     ],
   },
 ];

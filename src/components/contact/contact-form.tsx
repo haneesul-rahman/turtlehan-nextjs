@@ -40,22 +40,22 @@ export function ContactForm() {
   };
 
   return (
-    <section className="section container contact-layout">
+    <section className="section container contact-layout" id="contact">
       <div className="contact-details">
         <div className="section-heading">
           <span className="eyebrow">
             <i />
-            Get in touch
+            Start a conversation
           </span>
           <h2>
-            A direct line to
+            Let&apos;s build something
             <br />
-            <em>the right team.</em>
+            <em>together.</em>
           </h2>
         </div>
         <p>
-          Official contact details will appear here once confirmed. In the meantime, use the enquiry
-          form and select the division most relevant to you.
+          Tell us where you want to go. We&apos;ll bring the right perspective, people and
+          commitment to the conversation.
         </p>
         <div className="contact-list">
           <div>
