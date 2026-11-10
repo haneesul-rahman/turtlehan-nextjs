@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -18,25 +18,91 @@ const contactSchema = z.object({
   service: z.string().min(1, "Please select a service."),
   subject: z.string(),
   message: z.string().trim().min(1, "Please tell us how we can help."),
+  // Hidden honeypot field used to reject basic automated spam submissions.
+  website: z.string().optional(),
 });
 
 type ContactValues = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm<ContactValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", email: "", phone: "", service: "", subject: "", message: "" },
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      subject: "",
+      message: "",
+      website: "",
+    },
   });
 
-  const onSubmit = () => {
-    setSubmitted(true);
-    reset();
+  // Service-specific links use /contact?service=<service-slug>.
+  // Read the query on the client so this remains compatible with static export.
+  useEffect(() => {
+    const requestedService = new URLSearchParams(window.location.search).get(
+      "service",
+    );
+    if (
+      requestedService &&
+      services.some((service) => service.slug === requestedService)
+    ) {
+      setValue("service", requestedService, { shouldValidate: true });
+    }
+  }, [setValue]);
+
+  const onSubmit = async (values: ContactValues) => {
+    setSubmitted(false);
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const result = (await response.json().catch(() => null)) as {
+        success?: boolean;
+        error?: string;
+      } | null;
+
+      if (!response.ok || !result?.success) {
+        throw new Error(
+          result?.error || "We couldn't send your enquiry. Please try again.",
+        );
+      }
+
+      // Keep the selected service after a successful submission for convenience.
+      const selectedService = getValues("service");
+      reset({
+        name: "",
+        email: "",
+        phone: "",
+        service: selectedService,
+        subject: "",
+        message: "",
+        website: "",
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again in a moment.",
+      );
+    }
   };
 
   return (
@@ -55,8 +121,8 @@ export function ContactForm() {
             </h2>
           </div>
           <p>
-            Tell us where you want to go. We&apos;ll bring the right perspective, people and
-            commitment to the conversation.
+            Tell us where you want to go. We&apos;ll bring the right
+            perspective, people and commitment to the conversation.
           </p>
           <div className="contact-list">
             <div>
@@ -91,20 +157,46 @@ export function ContactForm() {
             </a>
           </div>
         </div>
-        <form className="contact-form" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <form
+          className="contact-form"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
           <div className="form-heading">
             <span>Business enquiry</span>
             <p>Fields marked * are required</p>
           </div>
+
+          {/* Honeypot: real visitors should leave this field empty. */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              width: 1,
+              height: 1,
+              overflow: "hidden",
+              clip: "rect(0, 0, 0, 0)",
+            }}
+          >
+            <label>
+              Website
+              <input
+                tabIndex={-1}
+                autoComplete="off"
+                {...register("website")}
+              />
+            </label>
+          </div>
+
           <div className="form-grid">
             <Field label="Full Name *" error={errors.name?.message}>
-              <Input {...register("name")} />
+              <Input autoComplete="name" {...register("name")} />
             </Field>
             <Field label="Email Address *" error={errors.email?.message}>
-              <Input type="email" {...register("email")} />
+              <Input type="email" autoComplete="email" {...register("email")} />
             </Field>
             <Field label="Phone Number">
-              <Input type="tel" {...register("phone")} />
+              <Input type="tel" autoComplete="tel" {...register("phone")} />
             </Field>
             <label className={errors.service ? "has-error" : ""}>
               <span>Service Interested In *</span>
@@ -131,10 +223,16 @@ export function ContactForm() {
               />
             </Field>
           </div>
+
           {submitted && (
             <div className="form-status success" role="status">
-              <Check size={18} /> Thank you. Your enquiry has been prepared successfully. Connect
-              this form to your preferred form service before launch.
+              <Check size={18} /> Thank you for contacting TURTLEHAN. Your
+              enquiry has been received. We&apos;ll get back to you shortly.
+            </div>
+          )}
+          {submitError && (
+            <div className="form-status error" role="alert">
+              {submitError}
             </div>
           )}
           {Object.keys(errors).length > 0 && (
@@ -143,7 +241,8 @@ export function ContactForm() {
             </div>
           )}
           <Button variant="gold" type="submit" disabled={isSubmitting}>
-            Send enquiry <span aria-hidden="true">→</span>
+            {isSubmitting ? "Sending..." : "Send enquiry"}{" "}
+            <span aria-hidden="true">→</span>
           </Button>
         </form>
       </div>

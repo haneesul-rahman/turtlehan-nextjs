@@ -671,8 +671,8 @@ em {
   filter: saturate(0.75);
 }
 .why-copy {
-  padding: 110px max(48px, calc((100vw - 1180px)/2));
-  padding-right: max(48px, calc((100vw - 1180px)/2));
+  padding: 110px max(48px, calc((100vw - 1180px) / 2));
+  padding-right: max(48px, calc((100vw - 1180px) / 2));
 }
 .why-copy .section-heading h2 {
   color: white;
@@ -850,7 +850,7 @@ em {
 .cta-banner {
   background: var(--navy);
   color: white;
-  padding: 80px max(48px, calc((100vw - 1180px)/2));
+  padding: 80px max(48px, calc((100vw - 1180px) / 2));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -902,7 +902,11 @@ em {
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(8, 28, 46, 0.93), rgba(8, 28, 46, 0.45));
+  background: linear-gradient(
+    90deg,
+    rgba(8, 28, 46, 0.93),
+    rgba(8, 28, 46, 0.45)
+  );
 }
 .page-hero-content {
   position: relative;
@@ -1015,7 +1019,11 @@ em {
 .detail-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(8, 27, 44, 0.92), rgba(8, 27, 44, 0.15) 75%);
+  background: linear-gradient(
+    0deg,
+    rgba(8, 27, 44, 0.92),
+    rgba(8, 27, 44, 0.15) 75%
+  );
 }
 .detail-content {
   position: relative;
@@ -1633,6 +1641,22 @@ footer .footer-grid > div:not(:first-child) > a:hover {
   font-size: 10px;
   line-height: 1.5;
   letter-spacing: 0.04em;
+}
+
+.client-google-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.client-google-link:hover {
+  gap: 10px;
 }
 
 @media (max-width: 1000px) {

@@ -83,7 +83,11 @@ const Icon = ({ name, size = 20 }: { name: string; size?: number }) => {
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <a href="#home" className={`logo ${light ? "logo-light" : ""}`} aria-label="Turtlehan home">
+    <a
+      href="#home"
+      className={`logo ${light ? "logo-light" : ""}`}
+      aria-label="Turtlehan home"
+    >
       <img
         className="logo-emblem"
         src="/images/turtlehan-logo-transparent.webp"
@@ -163,7 +167,11 @@ function ServiceModals() {
             aria-label="Close service details"
           />
           <div className="service-modal-panel">
-            <a className="service-modal-close" href="#services" aria-label="Close service details">
+            <a
+              className="service-modal-close"
+              href="#services"
+              aria-label="Close service details"
+            >
               <Icon name="close" size={22} />
             </a>
             <div className="service-modal-image">
@@ -201,7 +209,10 @@ function ServiceModals() {
                 </div>
               </div>
 
-              <a href="#contact" className="button button-gold">
+              <a
+                href={`/contact?service=${encodeURIComponent(service.slug)}`}
+                className="button button-gold"
+              >
                 {service.enquiryLabel ?? "Enquire about this service"}{" "}
                 <Icon name="arrow" size={18} />
               </a>
@@ -241,18 +252,23 @@ export function HomePage() {
   return (
     <>
       <section className="hero" id="home">
-        <img src={images.hero} alt="Professionals collaborating in a modern office" />
+        <img
+          src={images.hero}
+          alt="Professionals collaborating in a modern office"
+        />
         <div className="hero-overlay" />
         <div className="hero-content">
-          <span className="hero-kicker">A multi-service organisation · India & UAE</span>
+          <span className="hero-kicker">
+            A multi-service organisation · India & UAE
+          </span>
           <h1>
             Empowering Business.
             <br />
             <em>Enriching Lives.</em>
           </h1>
           <p>
-            Integrated business solutions, delivered with clarity, care and a long-term view across
-            two dynamic markets.
+            Integrated business solutions, delivered with clarity, care and a
+            long-term view across two dynamic markets.
           </p>
           <div className="hero-actions">
             <a href="#services" className="button button-gold">
@@ -282,20 +298,24 @@ export function HomePage() {
             }
           />
           <p className="lead">
-            TURTLEHAN is a multi-service business organisation bringing focused expertise to
-            organisations and communities across India and the UAE.
+            TURTLEHAN is a multi-service business organisation bringing focused
+            expertise to organisations and communities across India and the UAE.
           </p>
           <p>
-            From business advisory and workforce solutions to hospitality, property, travel and
-            social initiatives, our divisions share one belief: lasting value comes from
-            understanding people, acting with integrity and doing the details well.
+            From business advisory and workforce solutions to hospitality,
+            property, travel and social initiatives, our divisions share one
+            belief: lasting value comes from understanding people, acting with
+            integrity and doing the details well.
           </p>
         </div>
       </section>
 
       <section className="why-section">
         <div className="why-image">
-          <img src={images.people} alt="Business professionals reviewing a project" />
+          <img
+            src={images.people}
+            alt="Business professionals reviewing a project"
+          />
         </div>
         <div className="why-copy">
           <SectionHeading
@@ -309,8 +329,9 @@ export function HomePage() {
             }
           />
           <p>
-            We value enduring relationships over short-term transactions, bringing commercial
-            discipline and genuine attentiveness to every engagement.
+            We value enduring relationships over short-term transactions,
+            bringing commercial discipline and genuine attentiveness to every
+            engagement.
           </p>
           <div className="principles">
             {[
@@ -324,8 +345,16 @@ export function HomePage() {
                 "Trusted partnerships",
                 "Open, respectful relationships designed for the long term.",
               ],
-              ["03", "Customer focus", "Solutions shaped around real goals, not fixed templates."],
-              ["04", "Quality & transparency", "Clear communication and care at every step."],
+              [
+                "03",
+                "Customer focus",
+                "Solutions shaped around real goals, not fixed templates.",
+              ],
+              [
+                "04",
+                "Quality & transparency",
+                "Clear communication and care at every step.",
+              ],
             ].map(([n, title, text]) => (
               <div className="principle" key={n}>
                 <span>{n}</span>
@@ -358,7 +387,10 @@ export function HomePage() {
             <div>
               <small>South Asia</small>
               <h3>India</h3>
-              <p>Deep local context in one of the world’s most dynamic business environments.</p>
+              <p>
+                Deep local context in one of the world’s most dynamic business
+                environments.
+              </p>
             </div>
           </article>
           <article>
@@ -366,7 +398,10 @@ export function HomePage() {
             <div>
               <small>Middle East</small>
               <h3>United Arab Emirates</h3>
-              <p>A strategic presence at the centre of global commerce, hospitality and travel.</p>
+              <p>
+                A strategic presence at the centre of global commerce,
+                hospitality and travel.
+              </p>
             </div>
           </article>
         </div>
@@ -386,8 +421,8 @@ export function HomePage() {
               }
             />
             <p>
-              Six focused divisions, united by a commitment to dependable delivery and thoughtful
-              partnership.
+              Six focused divisions, united by a commitment to dependable
+              delivery and thoughtful partnership.
             </p>
           </div>
           <div className="service-grid">
@@ -416,12 +451,16 @@ export function HomePage() {
             }
           />
           <p>
-            Our social responsibility work focuses on community development and meaningful support
-            for people affected by autism and polio-related disabilities.
+            Our social responsibility work focuses on community development and
+            meaningful support for people affected by autism and polio-related
+            disabilities.
           </p>
         </div>
         <div className="csr-images">
-          <img src={images.csr} alt="Children together in a community setting" />
+          <img
+            src={images.csr}
+            alt="Children together in a community setting"
+          />
           <img src={images.csrAlt} alt="Women smiling together" />
         </div>
       </section>
@@ -492,17 +531,20 @@ export function AboutPage() {
         </div>
         <div className="editorial-body">
           <p className="lead">
-            TURTLEHAN brings together complementary capabilities across consulting, people,
-            property, hospitality, travel and social responsibility.
+            TURTLEHAN brings together complementary capabilities across
+            consulting, people, property, hospitality, travel and social
+            responsibility.
           </p>
           <p>
-            Our structure reflects the real world: businesses, places and communities are connected.
-            By looking across disciplines, we aim to understand challenges fully and respond with
-            practical, considered solutions.
+            Our structure reflects the real world: businesses, places and
+            communities are connected. By looking across disciplines, we aim to
+            understand challenges fully and respond with practical, considered
+            solutions.
           </p>
           <p>
-            Operating across India and the UAE gives us insight into two ambitious, fast-moving
-            markets while keeping our attention firmly on the people and organisations we serve.
+            Operating across India and the UAE gives us insight into two
+            ambitious, fast-moving markets while keeping our attention firmly on
+            the people and organisations we serve.
           </p>
         </div>
       </section>
@@ -510,15 +552,15 @@ export function AboutPage() {
         <article>
           <small>Our Mission</small>
           <h2>
-            To create enduring value through dependable expertise, thoughtful service and
-            responsible action.
+            To create enduring value through dependable expertise, thoughtful
+            service and responsible action.
           </h2>
         </article>
         <article>
           <small>Our Vision</small>
           <h2>
-            To be a trusted multi-service partner, recognised for enriching businesses and the
-            communities around them.
+            To be a trusted multi-service partner, recognised for enriching
+            businesses and the communities around them.
           </h2>
         </article>
       </section>
@@ -535,7 +577,13 @@ export function AboutPage() {
             }
           />
           <div className="values-grid">
-            {["Integrity", "Respect", "Responsibility", "Excellence", "Partnership"].map((v, i) => (
+            {[
+              "Integrity",
+              "Respect",
+              "Responsibility",
+              "Excellence",
+              "Partnership",
+            ].map((v, i) => (
               <article key={v}>
                 <span>0{i + 1}</span>
                 <h3>{v}</h3>
@@ -602,7 +650,10 @@ export function ServiceDetail({ service }: { service: Service }) {
           </span>
           <h1>{service.title}</h1>
           <p>{service.description}</p>
-          <Link href="/contact" className="button button-gold">
+          <Link
+            href={`/contact?service=${encodeURIComponent(service.slug)}`}
+            className="button button-gold"
+          >
             Enquire about this service <Icon name="arrow" size={18} />
           </Link>
         </div>
@@ -621,9 +672,9 @@ export function ServiceDetail({ service }: { service: Service }) {
         <div>
           <p className="lead">{service.overview}</p>
           <p>
-            Every engagement begins with listening. We take time to understand the context,
-            expectations and practical realities before shaping an approach around your
-            organisation’s needs.
+            Every engagement begins with listening. We take time to understand
+            the context, expectations and practical realities before shaping an
+            approach around your organisation’s needs.
           </p>
         </div>
       </section>
@@ -745,8 +796,8 @@ export function TeamPage() {
         <div className="team-note">
           <Icon name="quote" size={34} />
           <p>
-            Official leadership profiles, biographies and approved photography will be published
-            here when provided by TURTLEHAN.
+            Official leadership profiles, biographies and approved photography
+            will be published here when provided by TURTLEHAN.
           </p>
         </div>
         <div className="team-full">
@@ -813,13 +864,15 @@ export function CSRPage() {
         </div>
         <div className="editorial-body">
           <p className="lead">
-            We believe social responsibility begins with listening to communities, respecting lived
-            experience and supporting work that protects dignity.
+            We believe social responsibility begins with listening to
+            communities, respecting lived experience and supporting work that
+            protects dignity.
           </p>
           <p>
-            Our intended areas of focus include community development and support for people
-            affected by autism and polio-related disabilities. Specific verified programmes and
-            impact stories will be added as initiatives are formally established and documented.
+            Our intended areas of focus include community development and
+            support for people affected by autism and polio-related
+            disabilities. Specific verified programmes and impact stories will
+            be added as initiatives are formally established and documented.
           </p>
         </div>
       </section>
@@ -840,23 +893,24 @@ export function CSRPage() {
               <span>01</span>
               <h3>Community development</h3>
               <p>
-                Supporting locally informed initiatives that contribute to stronger, more resilient
-                communities.
+                Supporting locally informed initiatives that contribute to
+                stronger, more resilient communities.
               </p>
             </article>
             <article>
               <span>02</span>
               <h3>Autism support</h3>
               <p>
-                Seeking meaningful ways to support people affected by autism and the networks around
-                them.
+                Seeking meaningful ways to support people affected by autism and
+                the networks around them.
               </p>
             </article>
             <article>
               <span>03</span>
               <h3>Disability inclusion</h3>
               <p>
-                Promoting dignity and practical support for people with polio-related disabilities.
+                Promoting dignity and practical support for people with
+                polio-related disabilities.
               </p>
             </article>
           </div>
@@ -876,9 +930,10 @@ export function CSRPage() {
             }
           />
           <p>
-            We will only publish impact stories once outcomes, permissions and supporting
-            information have been verified. This space is reserved for future approved stories from
-            TURTLEHAN’s programmes and partners.
+            We will only publish impact stories once outcomes, permissions and
+            supporting information have been verified. This space is reserved
+            for future approved stories from TURTLEHAN’s programmes and
+            partners.
           </p>
           <div className="placeholder-chip">Verified stories coming soon</div>
         </div>
@@ -908,7 +963,9 @@ export function ContactPage() {
       <section className="map-placeholder">
         <Icon name="pin" size={30} />
         <h3>India & UAE office locations</h3>
-        <p>Google Maps embeds will be added when official addresses are provided.</p>
+        <p>
+          Google Maps embeds will be added when official addresses are provided.
+        </p>
       </section>
     </>
   );
@@ -941,8 +998,8 @@ export function Footer() {
         <div className="footer-brand">
           <Logo light />
           <p>
-            Integrated business solutions with a human point of view, serving organisations and
-            communities across India and the UAE.
+            Integrated business solutions with a human point of view, serving
+            organisations and communities across India and the UAE.
           </p>
           <div className="footer-social">
             <a href="#" aria-label="LinkedIn">
@@ -984,7 +1041,9 @@ export function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} TURTLEHAN. All rights reserved.</span>
+        <span>
+          © {new Date().getFullYear()} TURTLEHAN. All rights reserved.
+        </span>
         <span>India · UAE</span>
       </div>
     </footer>
