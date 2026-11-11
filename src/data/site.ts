@@ -66,91 +66,106 @@ export const services: Service[] = [
     title: "Manpower Supply",
     eyebrow: "People & Workforce",
     description:
-      "Responsive workforce solutions built around the operational needs of each organisation.",
+      "Reliable manpower solutions connecting skilled and unskilled workers with reputed and verified companies across the UAE and South India.",
     image: images.people,
     overview:
-      "Our manpower division supports organisations with structured recruitment, staffing and workforce coordination services.",
+      "Our manpower division provides recruitment and staffing solutions for reputed and verified companies across the UAE, Kerala, Karnataka and Tamil Nadu. We cater to both educated and non-educated candidates, supplying skilled and unskilled labour to meet diverse industry and operational requirements.",
     offerings: [
-      "Recruitment solutions",
-      "Staffing services",
-      "Workforce management",
-      "Manpower supply",
+      "Skilled and unskilled labour supply",
+      "Educated and non-educated workforce recruitment",
+      "Domestic and overseas recruitment",
+      "Staffing and workforce management",
+      "Recruitment for verified and reputed companies",
+      "Workforce coordination and placement support",
     ],
     benefits: [
-      "A responsive staffing approach",
-      "Role-aligned workforce support",
-      "Consistent coordination",
+      "Opportunities with reputed and verified companies",
+      "Recruitment across the UAE and South India",
+      "Workforce solutions for diverse skill levels",
+      "Reliable recruitment and placement support",
     ],
   },
   {
-    slug: "property-management",
+    slug: "real-estate",
     number: "03",
-    title: "Property Management",
-    eyebrow: "Places & Assets",
+    title: "Real Estate",
+    eyebrow: "Land & Commercial Properties",
     description:
-      "Attentive property support that helps residential and commercial spaces perform at their best.",
+      "Real estate solutions connecting buyers and investors with farmland, commercial land and commercial properties across South India.",
     image: images.property,
     overview:
-      "We coordinate the day-to-day details that support well-managed, dependable residential and commercial properties.",
+      "Our real estate division offers property sourcing and assistance across Kerala, Karnataka and Tamil Nadu. We deal in agricultural and farmland, commercial land and commercial complexes, helping clients explore suitable property opportunities based on their requirements.",
     offerings: [
-      "Residential property management",
-      "Commercial property management",
-      "Maintenance coordination",
-      "Property-related services",
+      "Agricultural and farmland",
+      "Commercial land",
+      "Commercial complexes",
+      "Property buying and selling assistance",
+      "Real estate consultation",
     ],
     benefits: [
-      "Dependable oversight",
-      "Streamlined coordination",
-      "Care for long-term property value",
+      "Property opportunities across three South Indian states",
+      "Options for agricultural and commercial investments",
+      "Assistance throughout the property search process",
+      "Solutions tailored to individual and business requirements",
     ],
   },
+
   {
     slug: "stay-reservations",
     number: "04",
     title: "Stay Reservations",
-    eyebrow: "Kannur Stays",
-    description: "Discover your perfect stay in Kannur.",
+    eyebrow: "Family & Group Stays",
+    description:
+      "Safe and comfortable homestay and resort reservations for families, school trips and college industrial visits across Kerala and Karnataka.",
     image: images.hospitality,
     overview:
-      "Explore a selection of welcoming homestays and resorts in Kannur, and let us help you find and book the right place for your getaway.",
+      "We help families, schools and colleges find and book suitable homestays and resorts across Kerala and Karnataka. Whether it is a family holiday, school excursion or college industrial visit (IV), we coordinate accommodation options that prioritise safety, comfort and a pleasant stay experience.",
     offerings: [
-      "Sea Breeze, Kannur",
-      "Kadale, Kannur",
-      "Roba, Kannur",
-      "Seashell, Kannur",
+      "Family-friendly homestays and resorts",
+      "Accommodation for school trips",
+      "Stay arrangements for college industrial visits (IV)",
+      "Group accommodation bookings",
+      "Homestay and resort reservations",
+      "Booking assistance and coordination",
     ],
     benefits: [
-      "Explore available stays",
-      "Find the right accommodation",
-      "Enquire about availability",
-      "Assistance with reservations",
+      "Accommodation options across Kerala and Karnataka",
+      "Suitable stays for families and educational groups",
+      "Focus on safety, comfort and convenience",
+      "Assistance with group bookings and reservations",
     ],
     enquiryLabel: "Enquire about a stay",
-    offeringsLabel: "Our stays",
-    benefitsLabel: "How we help",
+    offeringsLabel: "Our accommodation services",
+    benefitsLabel: "Why book through us",
   },
+
   {
     slug: "tourism-travels",
     number: "05",
     title: "Tourism & Travels",
     eyebrow: "Journeys & Discovery",
     description:
-      "Well-considered travel planning and tourism solutions for seamless, memorable journeys.",
+      "Explore the world with thoughtfully curated travel packages, flexible last-minute plans and unique heritage experiences across Malabar.",
     image: images.travel,
     overview:
-      "We help simplify travel through attentive planning, coordinated support and tourism-focused services.",
+      "We offer travel packages and tourism services across destinations worldwide, catering to planned holidays as well as last-minute travel requirements. We also feature a dedicated Malabar City Heritage experience, helping travellers explore the rich history, culture and heritage of the Malabar region. Bookings for heritage tours and travel packages can be conveniently made through us.",
     offerings: [
-      "Travel-related services",
-      "Tourism solutions",
-      "Travel planning",
-      "Journey coordination",
+      "Worldwide travel packages",
+      "Domestic and international tours",
+      "Last-minute travel planning and arrangements",
+      "Malabar City Heritage and historical tours",
+      "Cultural and heritage travel experiences",
+      "Travel bookings and coordination",
     ],
     benefits: [
-      "Simplified planning",
-      "Responsive assistance",
-      "Travel shaped around your needs",
+      "Travel options across destinations worldwide",
+      "Flexible arrangements for last-minute plans",
+      "Unique historical and cultural experiences in Malabar",
+      "Convenient booking assistance through us",
+      "Travel solutions tailored to individual preferences",
     ],
   },
+
   {
     slug: "college-admissions",
     number: "06",
@@ -201,7 +216,12 @@ export const clients: Client[] = [
   { name: "Beijing Bites", location: "Bangalore", category: "Restaurant" },
 ];
 
-export const team = [
+export type TeamMember = {
+  role: string;
+  focus: string;
+};
+
+export const team: TeamMember[] = [
   { role: "Leadership", focus: "Corporate Direction" },
   { role: "Division Leadership", focus: "Business Operations" },
   { role: "Division Leadership", focus: "People & Partnerships" },

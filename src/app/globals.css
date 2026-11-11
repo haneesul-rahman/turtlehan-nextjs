@@ -1250,24 +1250,46 @@ em {
 .contact-link:focus-visible {
   color: var(--gold);
 }
-.contact-phone-actions summary {
+.contact-list .contact-value-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.contact-copy-button {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #b8c4cf;
+  cursor: pointer;
+}
+.contact-copy-button:hover,
+.contact-copy-button:focus-visible {
+  color: var(--gold);
+}
+.contact-copy-button:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+}
+.contact-copy-error {
+  margin-top: 12px;
+  color: #f0b5a8;
+  font-size: 12px;
+}
+.contact-phone-actions {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  cursor: pointer;
-  list-style: none;
-}
-.contact-phone-actions summary::-webkit-details-marker {
-  display: none;
-}
-.contact-phone-actions summary:focus-visible {
-  outline: 1px solid var(--gold);
-  outline-offset: 4px;
 }
 .contact-phone-options {
   display: flex;
   gap: 12px;
   margin-top: 12px;
+  padding-top: 2px;
 }
 .contact-phone-options a {
   color: var(--gold);

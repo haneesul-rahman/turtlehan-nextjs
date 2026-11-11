@@ -10,17 +10,19 @@ export function CSRSection() {
             label="Responsibility in action"
             title={
               <>
-                Doing business with a<br />
-                <em>human purpose.</em>
+                Business with a<br />
+                <em>purpose beyond profit.</em>
               </>
             }
           />
           <p>
-            Our social responsibility work focuses on community development and
-            meaningful support for people affected by autism and polio-related
-            disabilities.
+            We believe in making a meaningful difference beyond business. We
+            dedicate 60–80% of our profits to charitable initiatives, supporting
+            community development and people affected by autism and
+            polio-related disabilities.
           </p>
         </div>
+
         <div className="csr-images">
           <img
             src={images.csr}

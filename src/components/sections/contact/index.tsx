@@ -1,7 +1,15 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Check, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import {
+  Check,
+  Copy,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -27,6 +35,8 @@ type ContactValues = z.infer<typeof contactSchema>;
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [copiedContact, setCopiedContact] = useState("");
+  const [copyError, setCopyError] = useState("");
 
   const {
     register,
@@ -105,6 +115,17 @@ export function ContactSection() {
     }
   };
 
+  const copyContact = async (value: string, label: string) => {
+    setCopyError("");
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedContact(label);
+    } catch {
+      setCopiedContact("");
+      setCopyError(`Couldn't copy the ${label}. Please copy it manually.`);
+    }
+  };
+
   return (
     <section className="section contact-section" id="contact">
       <div className="container contact-layout">
@@ -129,23 +150,59 @@ export function ContactSection() {
               <Mail />
               <span>
                 <small>Email</small>
-                <a
-                  className="contact-link"
-                  href="https://mail.google.com/mail/?view=cm&to=haneesulrahman%40gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  haneesulrahman@gmail.com
-                </a>
+                <span className="contact-value-row">
+                  <a
+                    className="contact-link"
+                    href="https://mail.google.com/mail/?view=cm&to=haneesulrahman%40gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    haneesulrahman@gmail.com
+                  </a>
+                  <button
+                    className="contact-copy-button"
+                    type="button"
+                    onClick={() =>
+                      copyContact("haneesulrahman@gmail.com", "email")
+                    }
+                    aria-label="Copy email address"
+                    title={
+                      copiedContact === "email" ? "Email copied" : "Copy email"
+                    }
+                  >
+                    {copiedContact === "email" ? (
+                      <Check size={14} aria-hidden="true" />
+                    ) : (
+                      <Copy size={14} aria-hidden="true" />
+                    )}
+                  </button>
+                </span>
               </span>
             </div>
             <div>
               <Phone />
-              <details className="contact-phone-actions">
-                <summary>
-                  <small>Phone / WhatsApp</small>
+              <span className="contact-phone-actions">
+                <small>Phone / WhatsApp</small>
+                <span className="contact-value-row">
                   <b>+917356820126</b>
-                </summary>
+                  <button
+                    className="contact-copy-button"
+                    type="button"
+                    onClick={() => copyContact("+917356820126", "phone number")}
+                    aria-label="Copy phone number"
+                    title={
+                      copiedContact === "phone number"
+                        ? "Phone number copied"
+                        : "Copy phone number"
+                    }
+                  >
+                    {copiedContact === "phone number" ? (
+                      <Check size={14} aria-hidden="true" />
+                    ) : (
+                      <Copy size={14} aria-hidden="true" />
+                    )}
+                  </button>
+                </span>
                 <div className="contact-phone-options" aria-label="Choose how to contact us">
                   <a href="tel:+917356820126">Call</a>
                   <a
@@ -156,7 +213,7 @@ export function ContactSection() {
                     WhatsApp
                   </a>
                 </div>
-              </details>
+              </span>
             </div>
             <div>
               <MapPin />
@@ -166,6 +223,11 @@ export function ContactSection() {
               </span>
             </div>
           </div>
+          {copyError && (
+            <p className="contact-copy-error" role="alert">
+              {copyError}
+            </p>
+          )}
           <div className="social-row">
             <span>Follow TURTLEHAN</span>
             <a href="#" aria-label="LinkedIn">

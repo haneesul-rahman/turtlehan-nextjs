@@ -11,8 +11,8 @@ export default function Page() {
       <AboutSection />
       <ServicesSection />
       <ClientSection />
-      <LeadershipSection />
       <CSRSection />
+      <LeadershipSection />
       <ContactSection />
     </>
   );
