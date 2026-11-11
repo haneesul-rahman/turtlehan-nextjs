@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/site/pages";
+import { Footer } from "@/components/layout/footer";
 
 import "./globals.css";
 

@@ -24,7 +24,7 @@ const contactSchema = z.object({
 
 type ContactValues = z.infer<typeof contactSchema>;
 
-export function ContactForm() {
+export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
@@ -129,15 +129,34 @@ export function ContactForm() {
               <Mail />
               <span>
                 <small>Email</small>
-                <b>Official email to be confirmed</b>
+                <a
+                  className="contact-link"
+                  href="https://mail.google.com/mail/?view=cm&to=haneesulrahman%40gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  haneesulrahman@gmail.com
+                </a>
               </span>
             </div>
             <div>
               <Phone />
-              <span>
-                <small>Phone / WhatsApp</small>
-                <b>Official number to be confirmed</b>
-              </span>
+              <details className="contact-phone-actions">
+                <summary>
+                  <small>Phone / WhatsApp</small>
+                  <b>+917356820126</b>
+                </summary>
+                <div className="contact-phone-options" aria-label="Choose how to contact us">
+                  <a href="tel:+917356820126">Call</a>
+                  <a
+                    href="https://wa.me/917356820126"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </details>
             </div>
             <div>
               <MapPin />

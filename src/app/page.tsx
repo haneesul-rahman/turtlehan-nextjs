@@ -1,5 +1,19 @@
-import { HomePage } from "@/components/site/pages";
+import { AboutSection } from "@/components/sections/about";
+import { ClientSection } from "@/components/sections/client";
+import { ContactSection } from "@/components/sections/contact";
+import { CSRSection } from "@/components/sections/csr";
+import { LeadershipSection } from "@/components/sections/leadership";
+import { ServicesSection } from "@/components/sections/services";
 
 export default function Page() {
-  return <HomePage />;
+  return (
+    <>
+      <AboutSection />
+      <ServicesSection />
+      <ClientSection />
+      <LeadershipSection />
+      <CSRSection />
+      <ContactSection />
+    </>
+  );
 }

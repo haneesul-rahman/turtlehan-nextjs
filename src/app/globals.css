@@ -1240,6 +1240,42 @@ em {
   font-size: 12px;
   font-weight: 600;
 }
+.contact-link {
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.contact-link:hover,
+.contact-link:focus-visible {
+  color: var(--gold);
+}
+.contact-phone-actions summary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  list-style: none;
+}
+.contact-phone-actions summary::-webkit-details-marker {
+  display: none;
+}
+.contact-phone-actions summary:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+}
+.contact-phone-options {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+.contact-phone-options a {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .social-row {
   display: flex;
   align-items: center;

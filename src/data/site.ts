@@ -113,7 +113,12 @@ export const services: Service[] = [
     image: images.hospitality,
     overview:
       "Explore a selection of welcoming homestays and resorts in Kannur, and let us help you find and book the right place for your getaway.",
-    offerings: ["Sea Breeze, Kannur", "Kadale, Kannur", "Roba, Kannur", "Seashell, Kannur"],
+    offerings: [
+      "Sea Breeze, Kannur",
+      "Kadale, Kannur",
+      "Roba, Kannur",
+      "Seashell, Kannur",
+    ],
     benefits: [
       "Explore available stays",
       "Find the right accommodation",
@@ -140,7 +145,11 @@ export const services: Service[] = [
       "Travel planning",
       "Journey coordination",
     ],
-    benefits: ["Simplified planning", "Responsive assistance", "Travel shaped around your needs"],
+    benefits: [
+      "Simplified planning",
+      "Responsive assistance",
+      "Travel shaped around your needs",
+    ],
   },
   {
     slug: "college-admissions",
@@ -164,4 +173,36 @@ export const services: Service[] = [
       "Structured application support",
     ],
   },
+];
+
+export type Client = {
+  name: string;
+  location: string;
+  category: string;
+};
+
+export const clients: Client[] = [
+  { name: "Green Leaf Hotel", location: "Ooty", category: "Hospitality" },
+  {
+    name: "Barbeque Grand Restaurant",
+    location: "Ooty",
+    category: "Restaurant",
+  },
+  { name: "Fish Palace", location: "Mysore", category: "Food & Beverage" },
+  {
+    name: "Meat House (Sira Fish)",
+    location: "Mysore",
+    category: "Food & Beverage",
+  },
+  { name: "Fresh Fetch", location: "Bangalore", category: "Food & Beverage" },
+  { name: "Tawa Fin", location: "Bangalore", category: "Restaurant" },
+  { name: "Tamak Restaurant", location: "Bangalore", category: "Restaurant" },
+  { name: "Coco Fresh", location: "Bangalore", category: "Food & Beverage" },
+  { name: "Beijing Bites", location: "Bangalore", category: "Restaurant" },
+];
+
+export const team = [
+  { role: "Leadership", focus: "Corporate Direction" },
+  { role: "Division Leadership", focus: "Business Operations" },
+  { role: "Division Leadership", focus: "People & Partnerships" },
 ];
