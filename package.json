@@ -32,7 +32,6 @@
     "eslint-config-next": "16.2.6",
     "oxfmt": "^0.76.0",
     "tailwindcss": "^4.1.17",
-    "typescript": "^5.9.3",
-    "wrangler": "^4.159.0"
+    "typescript": "^5.9.3"
   }
 }
