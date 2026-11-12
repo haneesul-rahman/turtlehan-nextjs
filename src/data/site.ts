@@ -17,6 +17,18 @@ export const images = {
     "https://images.unsplash.com/photo-1567122087721-47b09b61e1d1?auto=format&fit=crop&w=1400&q=82",
 };
 
+export type NavigationLink = {
+  href: string;
+  label: string;
+};
+
+export const navigationLinks: NavigationLink[] = [
+  { href: "#services", label: "Our Services" },
+  { href: "#clients", label: "Our Clients" },
+  { href: "#csr", label: "Our Motto" },
+  { href: "#team", label: "Our Team" },
+];
+
 export type Service = {
   slug: string;
   number: string;
@@ -172,20 +184,23 @@ export const services: Service[] = [
     title: "College Admissions",
     eyebrow: "Education & Guidance",
     description:
-      "Clear, student-focused guidance for navigating college choices and the admissions journey.",
+      "Helping students explore college opportunities and navigate the admission process in Bangalore with confidence.",
     image: images.education,
     overview:
-      "We support students and families through the practical stages of identifying suitable study opportunities and preparing applications.",
+      "We guide students and families through the college admission journey in Bangalore, helping them explore suitable colleges and courses, understand eligibility requirements, and navigate applications and documentation.",
     offerings: [
-      "College admissions guidance",
-      "Course and institution selection",
-      "Application support",
-      "Documentation coordination",
+      "College and university selection guidance",
+      "Course selection and career guidance",
+      "College admission assistance in Bangalore",
+      "Eligibility and admission process guidance",
+      "Application and documentation support",
+      "Admission process coordination",
     ],
     benefits: [
-      "A clearer admissions journey",
-      "Student-focused guidance",
-      "Structured application support",
+      "Guidance to identify suitable colleges",
+      "Better understanding of admission requirements",
+      "Simplified application process",
+      "Student-focused admission assistance",
     ],
   },
 ];
@@ -194,35 +209,93 @@ export type Client = {
   name: string;
   location: string;
   category: string;
+  image?: string;
 };
 
 export const clients: Client[] = [
-  { name: "Green Leaf Hotel", location: "Ooty", category: "Hospitality" },
+  {
+    name: "Green Leaf Hotel",
+    location: "Ooty",
+    category: "Hospitality",
+    image:
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
+  },
   {
     name: "Barbeque Grand Restaurant",
     location: "Ooty",
     category: "Restaurant",
+    image:
+      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
   },
-  { name: "Fish Palace", location: "Mysore", category: "Food & Beverage" },
+  {
+    name: "Fish Palace",
+    location: "Mysore",
+    category: "Food & Beverage",
+    image:
+      "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=80",
+  },
   {
     name: "Meat House (Sira Fish)",
     location: "Mysore",
     category: "Food & Beverage",
+    image:
+      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
   },
-  { name: "Fresh Fetch", location: "Bangalore", category: "Food & Beverage" },
-  { name: "Tawa Fin", location: "Bangalore", category: "Restaurant" },
-  { name: "Tamak Restaurant", location: "Bangalore", category: "Restaurant" },
-  { name: "Coco Fresh", location: "Bangalore", category: "Food & Beverage" },
-  { name: "Beijing Bites", location: "Bangalore", category: "Restaurant" },
+  {
+    name: "Fresh Fetch",
+    location: "Bangalore",
+    category: "Food & Beverage",
+    image:
+      "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    name: "Tawa Fin",
+    location: "Bangalore",
+    category: "Restaurant",
+    image:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    name: "Tamak Restaurant",
+    location: "Bangalore",
+    category: "Restaurant",
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    name: "Coco Fresh",
+    location: "Bangalore",
+    category: "Food & Beverage",
+    image:
+      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    name: "Beijing Bites",
+    location: "Bangalore",
+    category: "Restaurant",
+    image:
+      "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80",
+  },
 ];
 
 export type TeamMember = {
+  name: string;
+  image: string;
   role: string;
   focus: string;
 };
 
 export const team: TeamMember[] = [
-  { role: "Leadership", focus: "Corporate Direction" },
-  { role: "Division Leadership", focus: "Business Operations" },
-  { role: "Division Leadership", focus: "People & Partnerships" },
+  {
+    name: "Muhammed Haneesul Rahman",
+    image: "/images/team/hanees.png",
+    role: "Leadership",
+    focus: "Corporate Direction",
+  },
+  {
+    name: "Abhilash Menon",
+    image: "/images/team/abhilash.png",
+    role: "Division Leadership",
+    focus: "Business Operations",
+  },
 ];

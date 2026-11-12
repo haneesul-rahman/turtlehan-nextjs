@@ -19,17 +19,13 @@ export function LeadershipSection() {
             />
           </div>
           <div className="team-preview">
-            {team.map((person, i) => (
-              <article key={i}>
-                <div className="portrait-placeholder">
-                  <span>
-                    Profile image
-                    <br />
-                    to be added
-                  </span>
+            {team.map((person) => (
+              <article key={person.name}>
+                <div className="team-portrait">
+                  <img src={person.image} alt={person.name} />
                 </div>
                 <small>{person.focus}</small>
-                <h3>Name to be announced</h3>
+                <h3>{person.name}</h3>
                 <p>{person.role}</p>
               </article>
             ))}
