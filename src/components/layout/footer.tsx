@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { ReactNode } from "react";
-import { services } from "@/data/site";
+import { navigationLinks, services } from "@/data/site";
 
 const Icon = ({ name, size = 20 }: { name: string; size?: number }) => {
   const paths: Record<string, ReactNode> = {
@@ -119,13 +119,9 @@ export function Footer() {
         </div>
         <div>
           <h4>Navigate</h4>
-          {[
-            ["#services", "Our Services"],
-            ["#clients", "Our Clients"],
-            ["#team", "Our Team"],
-          ].map(([p, l]) => (
-            <a href={p} key={p}>
-              {l}
+          {navigationLinks.map(({ href, label }) => (
+            <a href={href} key={href}>
+              {label}
             </a>
           ))}
         </div>

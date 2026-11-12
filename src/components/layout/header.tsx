@@ -4,12 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-
-const links = [
-  ["#services", "Our Services"],
-  ["#clients", "Our Clients"],
-  ["#team", "Our Team"],
-] as const;
+import { navigationLinks } from "@/data/site";
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
@@ -41,7 +36,7 @@ export function Header() {
       <div className="nav-wrap">
         <Logo />
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {links.map(([href, label]) => (
+          {navigationLinks.map(({ href, label }) => (
             <a key={href} href={href}>
               {label}
             </a>
@@ -70,7 +65,7 @@ export function Header() {
             exit={reducedMotion ? undefined : { opacity: 0, height: 0 }}
             transition={{ duration: 0.24, ease: "easeOut" }}
           >
-            {links.map(([href, label]) => (
+            {navigationLinks.map(({ href, label }) => (
               <a key={href} href={href} onClick={() => setOpen(false)}>
                 {label}
                 <ArrowRight size={18} aria-hidden="true" />

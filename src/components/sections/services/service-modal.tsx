@@ -1,4 +1,5 @@
 import type { Service } from "@/data/site";
+import { Download } from "lucide-react";
 import { Icon } from "../../ui/icon";
 
 type ServiceModalProps = {
@@ -62,13 +63,31 @@ export function ServiceModal({ service }: ServiceModalProps) {
             </div>
           </div>
 
-          <a
-            href={`/contact?service=${encodeURIComponent(service.slug)}`}
-            className="button button-gold"
+          <div
+            className={`service-modal-actions ${
+              service.slug === "college-admissions"
+                ? "service-modal-actions--with-download"
+                : ""
+            }`}
           >
-            {service.enquiryLabel ?? "Enquire about this service"}{" "}
-            <Icon name="arrow" size={18} />
-          </a>
+            <a
+              href={`/contact?service=${encodeURIComponent(service.slug)}`}
+              className="button button-gold"
+            >
+              {service.enquiryLabel ?? "Enquire about this service"}{" "}
+              <Icon name="arrow" size={18} />
+            </a>
+            {service.slug === "college-admissions" && (
+              <a
+                href="/documents/college-directory.pdf"
+                download="college-directory.pdf"
+                className="button service-download-button"
+              >
+                Download College Directory
+                <Download size={18} aria-hidden="true" />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import { SectionHeading } from "../../ui/section-heading";
 export function CSRSection() {
   return (
     <>
-      <section className="section csr-preview container">
+      <section className="section csr-preview container" id="csr">
         <div className="csr-copy">
           <SectionHeading
             label="Responsibility in action"
