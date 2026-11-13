@@ -217,15 +217,13 @@ export const clients: Client[] = [
     name: "Green Leaf Hotel",
     location: "Ooty",
     category: "Hospitality",
-    image:
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/client/green-leaf.webp",
   },
   {
-    name: "Barbeque Grand Restaurant",
+    name: "Barbecuue Grand Restaurant",
     location: "Ooty",
     category: "Restaurant",
-    image:
-      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/client/barbecuue-grand.webp",
   },
   {
     name: "Fish Palace",
@@ -238,15 +236,13 @@ export const clients: Client[] = [
     name: "Meat House (Sira Fish)",
     location: "Mysore",
     category: "Food & Beverage",
-    image:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/client/meat-house.webp",
   },
   {
     name: "Fresh Fetch",
     location: "Bangalore",
     category: "Food & Beverage",
-    image:
-      "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/client/fresh-fetch.webp",
   },
   {
     name: "Tawa Fin",
@@ -256,11 +252,10 @@ export const clients: Client[] = [
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    name: "Tamak Restaurant",
+    name: "Thamaq Restaurant",
     location: "Bangalore",
     category: "Restaurant",
-    image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/client/thamaq.webp",
   },
   {
     name: "Coco Fresh",
